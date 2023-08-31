@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    
+    <head th:replace= "/fragments/head :: head" ></head>
+
+    <body>
+      
+        <nav th:replace= "/fragments/navbar :: nav" ></nav>
+        
+        <!--<div class="container">
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <div id="carouselExampleIndicators" class="carousel slide w-75 h-50 mx-auto" data-bs-interval="5000" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="/img/noticia1.png" class="d-block w-100 mx-auto" alt="noticia1">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="/img/noticia2.webp" class="d-block w-100 mx-auto" alt="noticia2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="/img/noticia3.jpg" class="d-block w-100 mx-auto" alt="noticia3">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+               
+        <header class="header">
+            <section class="contenedorMain">
+                <div class="tituloBiblioteca">
+                    <a class="navbar-brand" >NEWS EGG</a>
+                </div>
+
+                <div class="container contenedorLibros">
+                    <p class="tituloLibros" th:if="${session.usuariosession != null}" th:text=" 'Hola '+ ${session.usuariosession.nombre} "></p>
+                </div>
+                <!--<div class="container">
+                    <a th:if="${session.usuariosession.imagen != null}" class="d-flex align-items-center">
+                        <img class="logo"  th:src="@{/imagen/perfil/__${session.usuariosession.id}__}" >
+                    </a>
+                </div>-->
+
+                <div class="bg-circle-1 bg-circle"></div>
+                <div class="bg-circle-2 bg-circle"></div>
+                <div class="bg-circle-3 bg-circle"></div>
+                <div class="bg-circle-4 bg-circle"></div>
+            </section>
+        </header>
+        
+        <br>
+
+        <section>
+            <div class="card w-50 mb-3 mx-auto">
+                
+                <div class="card-body" th:each="noticia : ${noticias}">
+                    
+                    <h5 class="card-title" th:text="${noticia.titulo}"></h5>
+                    <img th:src="@{/imagen/perfil/__${noticia.id}__}" class="card-img-top" alt="imagen-noticia">
+                    <!--<p class="card-text" th:text="${noticia.cuerpo}"></p>-->
+                    <p class="card-text" th:text="${noticia.fecha}"></p>
+                    <a th:href= "@{/noticia/mostrar/__${noticia.id}__}" class="btn btn-primary">Ir a la Noticia</a>
+                    <hr>
+                </div>
+            </div>
+
+        </section>
+        
+        <footer th:replace= "/fragments/footer :: footer" ></footer>         
+
+
+        <!-- JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+
+</html>
